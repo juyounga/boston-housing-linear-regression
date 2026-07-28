@@ -2,6 +2,8 @@
 
 <h2>이 페이지는 아이티윌 데이터 분석 과정 수강생에게 제시하기 위한 포트폴리오 샘플 입니다</h2>
 
+---
+
 <img src="https://juyounga.kr/img/profile.jpeg" alt="Profile Photo" width="170" />
 
 # 주 영 아 &nbsp;|&nbsp; JU, YOUNG A
