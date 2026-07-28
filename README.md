@@ -1,49 +1,146 @@
-# 저소득층 비율과 방 개수로 보스턴 주택가격을 설명할 수 있는가
+<div align="center">
 
-**작성자:** OOO &nbsp;&nbsp;|&nbsp;&nbsp; **작성일:** 2026-07-28 
+<h2>이 페이지는 아이티윌 데이터 분석 과정 수강생에게 제시하기 위한 포트폴리오 샘플 입니다</h2>
 
-![Python](https://img.shields.io/badge/Python-3.13.9-3776AB?logo=python&logoColor=white) ![pandas](https://img.shields.io/badge/pandas-2.3.3-150458?logo=pandas&logoColor=white) ![NumPy](https://img.shields.io/badge/NumPy-2.3.5-013243?logo=numpy&logoColor=white) ![statsmodels](https://img.shields.io/badge/statsmodels-0.14.6-4051B5) ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8.0-F7931E?logo=scikitlearn&logoColor=white)
+<img src="https://juyounga.kr/img/profile.jpeg" alt="Profile Photo" width="170" />
 
+# 주 영 아 &nbsp;|&nbsp; JU, YOUNG A
 
-## 요약 (Executive Summary)
+### Full-Stack Data Professional
 
-- **데이터:** Boston Housing Dataset / https://www.kaggle.com/datasets/altavish/boston-housing-dataset
-- **규모:** 506 관측치 × 14 변수
-- **문제 유형:** 예측(회귀)
+**Data Science & Engineering Specialist**<br/>
+End-to-End Data Lifecycle 기반 연구·교육 전문가
 
-> 보스턴 광역권 506개 인구조사 구역의 주택 중위가격(`MEDV`)을 13개 지역 특성 변수로 설명했다.
-> 기계적 전처리(로그 변환 · 이상치 대체 · VIF · 후진소거)와 도메인 지식 기반 변수 제거를 각각 체크포인트로 나누어 8개 모형을 비교했고,
-> **도메인 지식으로 중복 변수를 걷어낸 뒤 로그 변환한 모형(독립변수 7개)** 을 최종 채택했다.
-> 조정 R² = 0.748(원본 척도 R² = 0.771), RMSE = 4.393천 달러로, 단순회귀 베이스라인(RMSE 6.204) 대비 **오차를 29.2% 줄였다.**
-> 가격을 가장 크게 좌우하는 요인은 **저소득층 비율(`LSTAT`, β = −0.597)** 이었으며, 방 개수(`RM`, β = 0.133)는 6번째에 그쳤다.
-> 즉 주택의 물리적 크기보다 **동네의 사회경제적 구성**이 가격을 더 강하게 설명한다.
+<br/>
 
-## 핵심 결과
+![Ph.D](https://img.shields.io/badge/Ph.D-도시공학-003876?style=for-the-badge)
+![연세대학교](https://img.shields.io/badge/연세대학교-공학대학원_프롭테크학과-0F4C81?style=for-the-badge)
+![Homepage](https://img.shields.io/badge/juyounga.kr-6C4AB6?style=for-the-badge&logo=googlechrome&logoColor=white)
+![Email](https://img.shields.io/badge/j.purplerose@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)
+
+</div>
+
+> 도시 데이터를 기반으로 **문제 정의 → 데이터 설계 → 모델링 → 평가 → 시스템 구현 → 교육 확산**에 이르기까지
+> **데이터 생애주기 전반**을 수행하는 연구자이자 교육자.
+
+---
+
+## 🧭 한눈에 보기
 
 | 항목 | 내용 |
 |---|---|
-| 최종 모형 | `log(MEDV) ~ CHAS + NOX + RM + log(DIS) + TAX + PTRATIO + log(LSTAT)` |
-| 설명력 | 조정 R² = 0.748 (원본 척도 R² = 0.771) &nbsp;/&nbsp; RMSE = 4.393 (천 달러), MAE = 3.058 |
-| 유의 변수 | 7개 전부 유의 (HC3 기준 p < .005) — `LSTAT`·`DIS`·`NOX`·`TAX`·`PTRATIO`·`RM`·`CHAS` |
-| 가정 검토 | 선형성 (위반) / 정규성 (위반) / 등분산성 (위반·HC3 보정) / 독립성 (위반·횡단면이라 해석 제외) |
-| 이번에 연습한 기법 | 로그 변환 자동 판정, IQR 이상치 대체, VIF 기반 공선성 제거, 후진소거법, 4대 가정 검정, HC3 로버스트 표준오차 |
+| **현직** | 연세대학교 공학대학원 프롭테크학과 (부동산과 AI) |
+| **학위** | Ph.D. 도시공학 (연세대학교) |
+| **박사 논문** | 주택 시장 분석을 위한 머신러닝 알고리즘에 관한 연구 – 서울시 사례 |
+| **정체성** | 분석가 · 엔지니어 · 교육자를 겸하는 **Full-Stack Data Professional** |
+| **홈페이지** | https://juyounga.kr |
+| **이메일** | j.purplerose@gmail.com |
 
-## 참고자료
+---
 
-### 데이터 출처
+## 🎯 전문 영역 (Expertise)
 
-- Kaggle 데이터셋: Boston Housing Dataset (`altavish/boston-housing-dataset`)
-- URL: https://www.kaggle.com/datasets/altavish/boston-housing-dataset
-- 원출처: Harrison, D. & Rubinfeld, D.L. (1978). *Hedonic prices and the demand for clean air*, Journal of Environmental Economics & Management, 5(1), 81–102.
-- 라이선스: 공개 데이터(Public Domain) — CMU StatLib 배포본
-- 참고한 커널·문서:
-  - scikit-learn 1.2 릴리스 노트 — `load_boston` 제거 사유(`B` 변수의 윤리적 문제)
+**하나의 학위가 아니라 8개의 축**으로 데이터 생애주기를 덮는 것이 이 프로필의 핵심입니다.
+각 영역은 실제 학위·자격·경력으로 뒷받침됩니다.
 
-## 회고
+| | 영역 | 기반 (학위 · 자격 · 경력) | 핵심 역량 |
+|:--:|---|---|---|
+| 1️⃣ | **Domain Research &<br/>Urban Data Science** | ![도시공학 박사](https://img.shields.io/badge/도시공학-Ph.D-003876) | 도시·공간 데이터 예측 모델 설계<br/>스마트시티 정책 및 시장 분석<br/>시계열·공간·패널 데이터 통합 분석 |
+| 2️⃣ | **Statistical Modeling &<br/>Machine Learning** | ![통계·데이터과학 학사](https://img.shields.io/badge/통계·데이터과학-B.S.-1F6FEB) | 머신러닝 모델 설계<br/>모델 성능 평가 및 일반화 검증<br/>해석 가능 모델링 · 설명 가능성 분석 |
+| 3️⃣ | **Data Engineering &<br/>Infrastructure** | ![MGM Pictures Korea](https://img.shields.io/badge/前_MGM_Pictures_Korea-전산팀장-6E7681) | Oracle DBA (9i / 10g / 11g)<br/>IBM Enterprise System Administrator<br/>Sun Solaris UNIX · Network & Security<br/>Linux System Administration (LPIC 1·2) |
+| 4️⃣ | **Software Engineering &<br/>System Implementation** | ![컴퓨터과학 학사](https://img.shields.io/badge/컴퓨터과학-B.S.-1F6FEB) ![정보처리기사](https://img.shields.io/badge/정보처리-기사-2EA043)<br/>![소프트마루](https://img.shields.io/badge/前_소프트마루-개발팀_과장-6E7681) | 웹·앱 기반 기업용 소프트웨어 개발<br/>분석–엔지니어링 통합 아키텍처 설계 |
+| 5️⃣ | **Data Strategy &<br/>Applied Consulting** | ![아이티페이퍼](https://img.shields.io/badge/前_아이티페이퍼-대표-6E7681) | 공공·민간 프로젝트 데이터 전략 수립<br/>비즈니스 문제 정의 및 분석 프레임 설계 |
+| 6️⃣ | **Communication &<br/>Knowledge Translation** | ![인문공학융합 석사](https://img.shields.io/badge/인문공학융합-M.S.-8957E5) ![컬러리스트기사](https://img.shields.io/badge/컬러리스트-기사-2EA043) | 데이터 시각화 전략 설계<br/>의사결정자 대상 스토리 기반 데이터 전달 |
+| 7️⃣ | **Education &<br/>Curriculum Development** | ![교육학 학사](https://img.shields.io/badge/교육학-B.S.-1F6FEB) ![훈련교사](https://img.shields.io/badge/직업능력개발훈련교사-2·3급-2EA043) | 정보통신 · 인공지능 분야 훈련교사<br/>**PBT**(Project-Based Training) 기반 교육 운영 |
+| 8️⃣ | **Academic Contribution** | ![논문 심사](https://img.shields.io/badge/사이버커뮤니케이션학회-논문_심사-DB6D28) | 학술지 논문 심사 참여 |
 
-- **새로 익힌 기법:** 왜도·첨도로 로그 변환 대상을 **자동 판정**하는 방법(`log` / `log1p` / 반사 후 `log1p`의 구분), 등분산 위배 시 **HC3 로버스트 표준오차**로 유의성 판정을 보정하는 방법, 그리고 전처리를 하나씩 누적한 **체크포인트로 각 처리의 기여도를 분리 측정**하는 방식이다.
-- **막혔던 지점과 해결 방법:**
-  - ① 종속변수에 로그를 씌운 뒤 R²·AIC로 모형을 비교하려다 척도가 달라 비교가 성립하지 않는다는 것을 알았다 → 예측값을 원본 단위로 되돌린 **RMSE를 주 지표**로 삼아 해결했다.
-  - ② 쌍별 상관이 −0.880인데도 VIF가 기준에 걸리지 않아 변수가 하나도 제거되지 않았다 → **도메인 지식으로 직접 제거한 버전을 따로 만들어 성능표에서 비교**하는 방식으로 풀었다.
-  - ③ `DIS`의 계수 부호가 단변량 상관과 반대로 나와 오류를 의심했으나, 다변량 통제의 정상적인 결과임을 확인하고 그 자체를 인사이트로 정리했다.
-- **다음 데이터셋에서 보완할 점:** 가정 위반을 **발견하는 것**까지는 했지만 **해소하는 것**은 등분산 하나뿐이었다. 선형성 위배에 대해 다항항·구간화 같은 대안을 준비해 두고, 처음부터 학습/검증 분할을 설계해 성능 수치를 일반화 가능한 값으로 보고하고 싶다.
+---
+
+## 🔬 Research Interests
+
+- 🏙️ **도시·공간 데이터를 활용한 주택시장 및 지역경제 분석**
+- 🧠 **머신러닝 기반 예측모형의 해석 가능성 및 일반화 성능**
+- 🔗 **데이터 엔지니어링과 분석 통합 구조의 실증 정책 분석**
+
+---
+
+## 🧪 Methodological Keywords
+
+![Machine Learning](https://img.shields.io/badge/01-Machine_Learning-0F4C81?style=flat-square)
+![Spatial Analysis](https://img.shields.io/badge/02-Spatial_&_Spatio--Temporal_Analysis-0F4C81?style=flat-square)
+![Panel & Time Series](https://img.shields.io/badge/03-Panel_Data_&_Time--Series_Modeling-0F4C81?style=flat-square)
+![Model Evaluation](https://img.shields.io/badge/04-Model_Evaluation_&_Generalization-0F4C81?style=flat-square)
+![XAI](https://img.shields.io/badge/05-Explainable_AI_%28XAI%29-0F4C81?style=flat-square)
+![Data Engineering](https://img.shields.io/badge/06-End--to--End_Pipeline_Design-0F4C81?style=flat-square)
+
+| # | 키워드 | 세부 |
+|:--:|---|---|
+| 01 | **Machine Learning** | Ensemble · Regularization · Tree-based Models |
+| 02 | **Spatial & Spatio-Temporal Analysis** | 공간 자기상관 · 시공간 결합 분석 |
+| 03 | **Panel Data & Time-Series Modeling** | 패널·시계열 구조 모형 |
+| 04 | **Model Evaluation & Generalization Diagnostics** | 성능 평가 · 일반화 진단 |
+| 05 | **Explainable AI (XAI)** | 해석 가능성 · 설명 가능성 |
+| 06 | **Data Engineering & End-to-End Pipeline Design** | 수집–처리–분석–배포 파이프라인 |
+
+---
+
+## 🚀 Future Research Directions
+
+1. **통합 예측 프레임워크**를 통한 도시 정책 및 시장 변동 요인 설명
+2. **공간·시계열 데이터 결합**의 다층적 도시 분석 모형 개발
+3. **실무 적용 가능한 데이터 생애주기 기반 분석·교육 통합 모델** 확립
+
+---
+
+## 🛠️ Technology Stack
+
+**Infrastructure & Systems**
+
+![Oracle](https://img.shields.io/badge/Oracle_DB-9i_·_10g_·_11g-F80000?logo=oracle&logoColor=white)
+![IBM](https://img.shields.io/badge/IBM-Enterprise_System-052FAD?logo=ibm&logoColor=white)
+![Solaris](https://img.shields.io/badge/Sun_Solaris-UNIX-EF7522)
+![Linux](https://img.shields.io/badge/Linux-LPIC_Level_1·2-FCC624?logo=linux&logoColor=black)
+
+**Analysis & Modeling** <sub>(이 저장소의 분석 환경)</sub>
+
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?logo=numpy&logoColor=white)
+![statsmodels](https://img.shields.io/badge/statsmodels-4051B5)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?logo=scikitlearn&logoColor=white)
+
+---
+
+## 📂 포트폴리오 구성
+
+데이터 생애주기를 **한 노트북 안에서** 검증하는 것을 원칙으로 합니다.
+품질 점검 → EDA → 모델링 → 진단 → 해석까지, 모든 코드 셀 아래에 **판단이 담긴 해석**을 남깁니다.
+
+| # | 프로젝트 | 기법 | 상태 |
+|:--:|---|---|:--:|
+| 01 | [보스턴 하우징 가격 결정요인](./01_%5B선형회귀%5D_보스턴_하우징/) | 선형회귀 | ![완료](https://img.shields.io/badge/완료-2EA043?style=flat-square) |
+| 02 | 보험료 결정요인 | 선형회귀 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 03 | 다이아몬드 가격 예측 | 선형회귀 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 04 | 하우징 데이터셋 | 선형회귀 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 05 | 사과 품종 분류 | 로지스틱 회귀 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 06 | 타이타닉 생존 예측 | 로지스틱 회귀 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 07 | (미정) | 머신러닝 · 예측 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 08 | (미정) | 머신러닝 · 예측 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 09 | (미정) | 머신러닝 · 군집 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+| 10 | (미정) | 머신러닝 · 분류 | ![예정](https://img.shields.io/badge/예정-6E7681?style=flat-square) |
+
+**공통 모듈** — [`helpers/`](./helpers/)
+품질 점검(`my_qtcheck`) · 시각화(`my_plot`) · 통계 검정(`my_stats`) · 전처리(`my_prep`) · 선형회귀(`my_ols`) · 로지스틱 회귀(`my_logit`)
+
+---
+
+<div align="center">
+
+### 📮 Contact
+
+[![Email](https://img.shields.io/badge/j.purplerose@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:j.purplerose@gmail.com)
+[![Homepage](https://img.shields.io/badge/juyounga.kr-6C4AB6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://juyounga.kr)
+
+<sub>Urban Data Science · Machine Learning · Data Engineering · Smart City · XAI · Education · Data Literacy</sub>
+
+</div>
